@@ -2,7 +2,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from "react-router-dom";
 import { BuscarScreen } from "../screens/BuscarScreen";
 import { CrearScreen } from "../screens/CrearScreen";
@@ -13,12 +14,12 @@ export default function RouteApp() {
       <div>
         <nav>
           <h2>Laboratio de Bioinformatica</h2>
-          <ul>
-            <li>
-              <Link to="/">Buscar Anotaciones</Link>
+          <ul className="nav justify-content-center">
+            <li className="nav-item" >
+              <NavLink className="nav-link"  activeClassName="active"  to="/">Buscar Anotaciones</NavLink>
             </li>
-            <li>
-              <Link to="/crear">Crear Anotaciones</Link>
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="active"  to="/crear">Crear Anotaciones</NavLink>
             </li>
           </ul>
         </nav>
