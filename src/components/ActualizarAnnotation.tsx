@@ -16,7 +16,7 @@ interface Data{
 export const ActualizarAnnotation = ( { uri ,tags }:Data ) => {
 
 
-  const { isEditing  } = useSelector( (store: Reducers) => store.select)
+  // const { isEditing  } = useSelector( (store: Reducers) => store.select)
   const dispatch = useDispatch();
   
   const {formData, onChange, } = useForm({
@@ -25,6 +25,9 @@ export const ActualizarAnnotation = ( { uri ,tags }:Data ) => {
   })
 
   const onClick = () => {
+
+
+    
 
     console.log(formData)
 
