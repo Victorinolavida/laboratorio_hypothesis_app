@@ -18,3 +18,8 @@
 .no-opacity{
   opacity: 1  !important;
 }
+
+.boton-cierre{
+  top:5%;
+  right: 5%;
+}

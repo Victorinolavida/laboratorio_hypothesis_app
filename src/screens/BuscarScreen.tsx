@@ -7,6 +7,8 @@ import { Bottones } from "./Bottones";
 import { FormComponent } from "../components/FormComponent";
 import { Annotations } from "../components/Annotations";
 import { usePagination } from '../hook/usePagination';
+import { useDispatch, useSelector } from "react-redux";
+import { Reducers } from '../state/store';
 
 
 export interface InitialState {
@@ -24,44 +26,36 @@ const INITIALSTATE: InitialState = {
 
 export const BuscarScreen = () => {
 
-//las anotaciones han sido cargadas
-const [isLoading, setIsLoading] = useState(true);
-
   //datos del form
   const { formData, onChange } = useForm(INITIALSTATE);
-
-  // resutlados de las busqueda sde anotaciones
-  const [anotaciones, setAnotaciones] = useState<AnotationInterface[]>(  [] );
 
 //estado que maneja la paginacion
   const { perPage, TotalPages, startPage, setTotalPage, moverPage } = usePagination(10)
 
   
+  const { anotaciones, isLoading } = useSelector( (store: Reducers) => store.buscar)
+  const dispatch = useDispatch();
+
   const { buscarTag, buscarUrl, buscarUser } = formData;
 
   //funcion que maneja el form
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-
-  const url = getAnotaciones(buscarUrl, buscarUser, buscarTag)
+    const url = getAnotaciones(buscarUrl, buscarUser, buscarTag)
      fetch( url )
-    .then( res => res.json() )
-    .then( data => {
-      setAnotaciones( data.rows )
-      setIsLoading(false)
-    })
+       .then( res => res.json() )
+       .then( data => {
+          // Pone las anotaciones en el estado
+             dispatch({ type:"setAnotaciones",payload: data.rows })
+       })
   
-  //limpiando info
-    // setFormData(INITIALSTATE);
     moverPage(0);
-    // setAnotaciones([]);
 
   };
 
   useEffect(() => {
     
-  
     if(anotaciones.length !==0){
       setTotalPage( anotaciones.length );
     }
@@ -96,11 +90,8 @@ const [isLoading, setIsLoading] = useState(true);
       startPage={startPage }
       perPage={perPage}
        />
-   
-   
       {
-      
-       isLoading? '': (
+         isLoading? '': (
          <Bottones
          numPages={ perPage }
            numTotalPages={ TotalPages }

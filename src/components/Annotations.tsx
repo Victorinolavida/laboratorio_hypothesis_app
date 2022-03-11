@@ -4,7 +4,8 @@ import { TOKEN } from '../hypotesis-config/config'
 import { AnotationInterface } from '../interfaces/annotations';
 import { useState } from 'react';
 import { ActualizarAnnotation } from './ActualizarAnnotation';
-import { useForm } from '../hook/useForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { Reducers } from '../state/store';
 
 interface Props {
     isLoading: boolean
@@ -25,35 +26,25 @@ const INITALSTATE = {
 export const Annotations = ({isLoading,anotaciones,startPage,perPage}:Props) => {
 
 
-  const [anotacion, setAnotacion] = useState<Data>(INITALSTATE)
-
-
-  const { uri,tags } = anotacion;
-
-  
-
-  const [ isEditing, setIsEditing] = useState(false);
+  const { uri, tags, isEditing  } = useSelector( (store: Reducers) => store.select)
+  const dispatch = useDispatch();
 
 
   const editar= ( e:React.MouseEvent<HTMLButtonElement, MouseEvent>  ) => {
-  
-    console.log(e.currentTarget.id)
-  
+
     const url = getAnotacion( e.currentTarget.id );
   
-  fetch(url,{
-    headers: {
-      'Authorization': ` Bearer ${ TOKEN }`
-    }
-  }).then(resp => resp.json())
-  .then(data => {
-    setAnotacion({
-      uri:data.uri,
-      tags:data.tags,
-    })
-  })
-  
-  setIsEditing(true);
+      fetch(url,{
+        headers: {
+          'Authorization': ` Bearer ${ TOKEN }`
+        }
+      }).then(resp => resp.json())
+      .then(data => {
+          dispatch({ type:"EditingAnotation",payload:{
+            uri:data.uri,
+            tags:data.tags,
+          } })
+      })
 
   }
   
@@ -68,7 +59,7 @@ export const Annotations = ({isLoading,anotaciones,startPage,perPage}:Props) => 
   return (
     <div>
 
-    {isEditing?(  <ActualizarAnnotation  uri={  uri }  tags={ tags }   />):''}
+    {isEditing ? (  <ActualizarAnnotation  uri={  uri }  tags={ tags }   />):''}
     {/* <ActualizarAnnotation  uri={  uri }  tags={ tags }    /> */}
 
     <ul className="list-group mt -5" >
@@ -81,7 +72,7 @@ export const Annotations = ({isLoading,anotaciones,startPage,perPage}:Props) => 
           <span className="font-weight-bold">TAGS: {el.tags.join(", ")}</span>
           <div className="mt-3">
             <button onClick={e =>  editar(e)} id={ el.id } className="btn btn-light" >Editar</button>
-            <button onClick={e =>  eliminar(e)} className="btn btn-danger" id={ el.id } >Eliminar</button>
+            <button onClick={e =>  eliminar(e)} className="btn btn-danger ms-3" id={ el.id } >Eliminar</button>
           </div>
 
         </li>
