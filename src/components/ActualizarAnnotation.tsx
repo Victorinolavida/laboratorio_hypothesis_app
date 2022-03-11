@@ -1,7 +1,7 @@
 import { InputText } from "./InputText"
 import { useForm } from '../hook/useForm';
-import { useDispatch, useSelector } from "react-redux";
-import { Reducers } from "../state/store";
+import { useDispatch, } from "react-redux";
+import Swal from 'sweetalert2'
 
 
 interface Data{
@@ -25,12 +25,15 @@ export const ActualizarAnnotation = ( { uri ,tags }:Data ) => {
   })
 
   const onClick = () => {
-
-
     
+    // falta poner le fetch
+    console.log( formData,'falta fetch'  )
+    dispatch({ type:"noEditing" })
 
-    console.log(formData)
-
+    Swal.fire({
+      title: 'Registro eliminado',
+      icon: 'success',
+    })
 
   }
 
@@ -40,6 +43,8 @@ export const ActualizarAnnotation = ( { uri ,tags }:Data ) => {
     dispatch({ type:"noEditing" })
 
   }
+
+
 
 
   return (

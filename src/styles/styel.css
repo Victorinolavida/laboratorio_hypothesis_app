@@ -23,3 +23,8 @@
   top:5%;
   right: 5%;
 }
+
+
+.sombra {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}

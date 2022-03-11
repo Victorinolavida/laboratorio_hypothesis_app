@@ -1,13 +1,11 @@
-import {  FormEvent, MouseEvent,useEffect,useState } from "react";
-// import { InputText } from "../components/InputText"
+import {  FormEvent, MouseEvent,useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { getAnotaciones } from "../helpers/getAnotaciones";
-import { AnotationInterface } from "../interfaces/annotations";
 import { useForm } from "../hook/useForm";
 import { Bottones } from "./Bottones";
-import { FormComponent } from "../components/FormComponent";
-import { Annotations } from "../components/Annotations";
+import { Annotations,FormComponent } from "../components";
 import { usePagination } from '../hook/usePagination';
-import { useDispatch, useSelector } from "react-redux";
 import { Reducers } from '../state/store';
 
 

@@ -2,10 +2,10 @@ import React from 'react'
 import { getAnotacion } from '../helpers/getAnotaciones'
 import { TOKEN } from '../hypotesis-config/config'
 import { AnotationInterface } from '../interfaces/annotations';
-import { useState } from 'react';
 import { ActualizarAnnotation } from './ActualizarAnnotation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Reducers } from '../state/store';
+import Swal from 'sweetalert2';
 
 interface Props {
     isLoading: boolean
@@ -13,15 +13,7 @@ interface Props {
     startPage: number
     perPage:number
 }
-interface Data{
-  uri:string;
-  tags:string[] | [];
-}
 
-const INITALSTATE = {
-  uri:'',
-  tags:[]
-}
 
 export const Annotations = ({isLoading,anotaciones,startPage,perPage}:Props) => {
 
@@ -47,11 +39,30 @@ export const Annotations = ({isLoading,anotaciones,startPage,perPage}:Props) => 
       })
 
   }
+
+
   
-  const eliminar= ( e:React.MouseEvent<HTMLButtonElement, MouseEvent>  ) => {
+  const eliminar=async ( e:React.MouseEvent<HTMLButtonElement, MouseEvent>  ) => {
+    const acept =await Swal.fire({
+      title: 'Advertencia!!!',
+      text: '¿Estas seguro que quieres eliminar este registro?',
+      icon: 'warning',
+      confirmButtonText: 'Aceptar',
+      showCancelButton: true,
+      cancelButtonText:'Cancelar'
+    })
+
+    console.log(acept)
   
-    console.log(e.currentTarget.id)
-  
+    if( acept.isConfirmed ){
+      setTimeout(()=>{
+        Swal.fire({
+          title: 'Registro eliminado',
+          icon: 'success',
+        })
+      },1000)
+    }
+
   }
   
 
@@ -66,7 +77,7 @@ export const Annotations = ({isLoading,anotaciones,startPage,perPage}:Props) => 
     {
       !isLoading? 
       anotaciones.slice(startPage*perPage,(startPage+1)*perPage-1 ).map((el) => (
-        <li key={el.id} className="list-group-item list-group-item-success p-4 m-2">
+        <li key={el.id} className="list-group-item list-group-item-success p-4 m-2 sombra ">
           <h2 className="h2 text-justify">LINK: {el.uri}</h2>
             <p className="text-muted">ID: {el.id}</p>
           <span className="font-weight-bold">TAGS: {el.tags.join(", ")}</span>
