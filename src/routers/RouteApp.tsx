@@ -12,14 +12,15 @@ export default function RouteApp() {
   return (
     <Router>
       <div>
-        <nav>
-          <h2>Laboratio de Bioinformatica</h2>
-          <ul className="nav justify-content-center">
-            <li className="nav-item" >
-              <NavLink className="nav-link"  activeClassName="active"  to="/">Buscar Anotaciones</NavLink>
+        <nav className="mt-3">
+          <ul className="nav nav-tabs ">
+          <li className="nav-item navbar-brand">Laboratio de Bioinformaciòn</li>
+            <li className="nav-item"  >
+              <NavLink className={isActive =>  ( `nav-link ${isActive} ? 'active' : 'inactive'`)}
+                to="/">Buscar Anotaciones</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active"  to="/crear">Crear Anotaciones</NavLink>
+              <NavLink className={isActive =>  ( `nav-link ${isActive} ? 'active' : 'inactive'`)}  to="/crear">Crear Anotaciones</NavLink>
             </li>
           </ul>
         </nav>

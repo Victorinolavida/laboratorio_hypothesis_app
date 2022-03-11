@@ -8,13 +8,18 @@ interface Props {
 }
 
 export const Bottones = ({  numTotalPages, currentPage,onClick }: Props) => {
+
   return (
-    <div className="container mt-5">
-      <button onClick={ e=>onClick(e) } className='btn btn-outline-secondary' >prev</button>
+    <div className="container mt-3 mb-2 d-flex justify-content-around ">
+      <button onClick={ e=>onClick(e) } 
+      className={`btn btn-outline-secondary ${ currentPage===0?'disabled':'' }`} 
+      >prev</button>
 
-      <span>{`${currentPage}/${numTotalPages}`}</span>
+      <span className="text-bold">{`${currentPage+1}/${numTotalPages}`}</span>
 
-      <button onClick={ e=>onClick(e) } className='btn btn-outline-secondary' >sig</button>
+      <button onClick={ e=>onClick(e) } 
+      className={`btn btn-outline-secondary ${ currentPage===numTotalPages-1?'disabled':'' }`} 
+      >sig</button>
     </div>
   );
 };

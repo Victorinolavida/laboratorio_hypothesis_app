@@ -6,9 +6,10 @@ interface Props {
   id:string,
   onChange?:(e:ChangeEvent<HTMLInputElement>)=>void
   placeholder?:string
+  defaultValue?:string
 }
 
-export const InputText = ({ name ,label,id,placeholder,onChange }: Props )=> {
+export const InputText = ({ name ,label,id,placeholder,onChange,defaultValue }: Props )=> {
   return (
     <div className="input-group flex-nowrap mt-3" >
     
@@ -16,6 +17,7 @@ export const InputText = ({ name ,label,id,placeholder,onChange }: Props )=> {
       { label }
     </label> 
     <input type="text" name={ name } id={ id } onChange={ onChange } placeholder={ placeholder }  
+    defaultValue={ defaultValue }
       className="form-control"
     />
 

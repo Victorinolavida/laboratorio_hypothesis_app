@@ -8,11 +8,16 @@ interface Props {
 }
 
 export const FormComponent = ({ onSubmit ,onChange  }: Props ) => {
+
+  const click = () =>{
+    console.log('hola')
+
+  }
   return (
     <>
   
      {/* input url */}
-     <form onSubmit={(e) => onSubmit(e)} className='form-control mt-5'>
+     <form onSubmit={(e) => onSubmit(e)} className='form-control mt-5 mb-4'>
         {/* <label form='buscarUrl'>URL</label>
       <input type="text" name="buscarUrl" id="buscarUrl"/> */}
 
@@ -47,7 +52,10 @@ export const FormComponent = ({ onSubmit ,onChange  }: Props ) => {
         />
 
         <br />
-        <button type="submit" className='btn btn-primary mb-3'>Buscar</button>
+        <button 
+        onClick={ click }
+        type="submit" className='btn btn-primary mb-3'>Buscar</button>
+
       </form>
 
     

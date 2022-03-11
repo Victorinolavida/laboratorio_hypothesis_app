@@ -10,6 +10,8 @@ export const useForm = <T>(initState: T) => {
       ...prev,
       [event.target.name]: event.target.value,
     }));
+
+
   };
 
   return {
