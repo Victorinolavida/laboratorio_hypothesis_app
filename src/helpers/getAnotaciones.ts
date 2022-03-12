@@ -1,4 +1,23 @@
-import { URLBASE } from "../hypotesis-config/config";
+import { TOKEN, URLBASE } from "../hypotesis-config/config";
+
+export interface StateCrearAnotacion {
+  group: string
+  uri: string
+  text: string
+  tags: string[]
+}
+
+
+export interface DataPatch {
+  id:string
+  uri: string
+  text:string,
+  tags: string[] |[]
+}
+
+
+
+
 
 
 export const getAnotaciones =  (
@@ -30,4 +49,51 @@ export const getAnotacion = ( id:string):string => {
   // https://api.hypothes.is/api/annotations/{id}
  return  `${ URLBASE }annotations/${id}`
  
+}
+
+
+
+export const postAnnotation = async ( payload:StateCrearAnotacion ) => {
+
+  const data = {
+    ...payload,
+    permissions: {
+      read: [
+     "group:__world__"
+          ]},
+  }
+   await fetch(`${ URLBASE }annotations`, {
+    method:'POST',
+    headers:{
+      Authorization: `Bearer ${TOKEN}`
+    },
+    body: JSON.stringify( data )
+  })
+
+}
+
+
+
+export const patchAnotation = async( { id, ...data }: DataPatch ) => {
+
+  await fetch(`${ URLBASE }annotations/${ id }`, {
+    method:'PATCH',
+    headers:{
+      Authorization: `Bearer ${TOKEN}`
+    },
+    body: JSON.stringify( data )
+  })
+
+}
+
+
+export const deleteAnotation = async( id: string  ) => {
+
+  await fetch(`${ URLBASE }annotations/${ id }`, {
+    method:'DELETE',
+    headers:{
+      Authorization: `Bearer ${TOKEN}`
+    }
+  })
+
 }

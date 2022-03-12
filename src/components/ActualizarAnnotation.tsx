@@ -1,39 +1,54 @@
 import { InputText } from "./InputText"
-import { useForm } from '../hook/useForm';
-import { useDispatch, } from "react-redux";
-import Swal from 'sweetalert2'
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import { patchAnotation } from "../helpers/getAnotaciones";
 
 
-interface Data{
+export interface Data{
   uri:string,
+  id:string;
   tags?:string[] |[]; 
+  text: string;
   onChange?:(event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 
 
 
-export const ActualizarAnnotation = ( { uri ,tags }:Data ) => {
+export const ActualizarAnnotation = ( { uri ,tags,text, id }:Data ) => {
 
+const INITIALSTATE = {
+  url: uri,
+  tagsStr: tags?.join(',') || '',
+  texto: text
+  }
 
   // const { isEditing  } = useSelector( (store: Reducers) => store.select)
   const dispatch = useDispatch();
   
-  const {formData, onChange, } = useForm({
-    uri,
-    tags
-  })
+  const [data, setData] = useState( INITIALSTATE )
+  const { texto, url, tagsStr } = data;
+
 
   const onClick = () => {
+
     
-    // falta poner le fetch
-    console.log( formData,'falta fetch'  )
+    const newDate = {
+      id,
+      uri: url,
+      text:texto,
+      tags: tagsStr.split(',')
+    }
+    patchAnotation( newDate )
+    .then(el => {
+      Swal.fire('Cambios guardados!', '', 'success')
+    })
+    .catch(el => Swal.fire('Error!', 'Algo salio mal', 'error') )
+
     dispatch({ type:"noEditing" })
 
-    Swal.fire({
-      title: 'Registro eliminado',
-      icon: 'success',
-    })
+
 
   }
 
@@ -44,8 +59,15 @@ export const ActualizarAnnotation = ( { uri ,tags }:Data ) => {
 
   }
 
+  const onChange = ( e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement> )  =>{
+  
 
+    setData(prev=>({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
 
+  }
 
   return (
     <div className="position-fixed over card  ">
@@ -55,10 +77,17 @@ export const ActualizarAnnotation = ( { uri ,tags }:Data ) => {
       <button className="btn btn-outline-danger position-absolute boton-cierre "
         onClick={ closeBtn }
       >X</button>
+      <form>
 
-      <InputText name="URL" label="URL" id="mod-URL"  defaultValue={ uri } onChange={ onChange } />
+      <InputText name="url" label="URL" id="url"  value={ url } onChange={ e => onChange(e) } />
 
-      <InputText name="TAGS" label="TAGS" id="mod-TAGS"  defaultValue={ tags?.join(',') } onChange={ onChange } />
+      <InputText name="tagsStr" label="TAGS" id="tagsStr"  value={ tagsStr } onChange={ e => onChange(e) }/>
+
+      <div className="input-group flex-nowrap mt-3">
+        <label htmlFor="text"  className="input-group-text ">Texto</label>
+      <textarea name="texto" id="texto" className="form-control" value={ texto } onChange={ e => onChange(e) }></textarea>
+        </div>
+      </form>
 
       <button  onClick={ onClick } className="btn btn-outline-secondary mt-4">Actualizar</button>
 

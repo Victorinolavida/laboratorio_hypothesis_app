@@ -1,8 +1,6 @@
 import { combineReducers, compose, createStore } from "redux";
-import { ActionBuscar, buscarReducer, StateBuscar } from "../reducers/buscarAnotaciones";
+import { buscarReducer } from "../reducers/buscarAnotaciones";
 import { anotacionSelect } from '../reducers/anotacionSelect';
-import { crearAnotacion } from '../reducers/crearAnotacion';
-
 
 
 
