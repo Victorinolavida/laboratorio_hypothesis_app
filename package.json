@@ -1,6 +1,7 @@
 {
   "name": "laboratorio-bioinformacion",
   "version": "0.1.0",
+  "homepage": "https://victorinolavida.github.io/laboratorio_bio/",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
