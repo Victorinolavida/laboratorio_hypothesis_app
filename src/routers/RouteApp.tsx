@@ -17,11 +17,11 @@ export default function RouteApp() {
           <li className="nav-item navbar-brand">Laboratio de Bioinformaciòn</li>
             <li className="nav-item"  >
               <NavLink className={isActive =>  ( `nav-link ${isActive} ? 'active' : 'inactive'`)}
-                to="/laboratorio_bio/">Buscar Anotaciones</NavLink>
+                to="/">Buscar Anotaciones</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className={isActive =>  ( `nav-link ${isActive} ? 'active' : 'inactive'`)}  
-              to="/laboratorio_bio/crear">Crear Anotaciones</NavLink>
+              to="/crear">Crear Anotaciones</NavLink>
             </li>
           </ul>
         </nav>
@@ -29,14 +29,14 @@ export default function RouteApp() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/laboratorio_bio/crear">
+          <Route path="/crear">
             <CrearScreen />
           </Route>
           
-          <Route exact path="/laboratorio_bio/">
+          <Route exact path="/">
             <BuscarScreen />
           </Route>
-          <Redirect to="/laboratorio_bio/" />
+          <Redirect to="/" />
           
 
 
