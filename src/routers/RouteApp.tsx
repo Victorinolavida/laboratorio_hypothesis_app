@@ -27,11 +27,11 @@ export default function RouteApp() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/crear">
+          <Route path="/laboratorio_bio/crear">
             <CrearScreen />
           </Route>
           
-          <Route exact path="/">
+          <Route exact path="/laboratorio_bio/">
             <BuscarScreen />
           </Route>
           
