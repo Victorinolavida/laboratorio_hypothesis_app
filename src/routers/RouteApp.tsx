@@ -3,7 +3,7 @@ import {
   Switch,
   Route,
   NavLink,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import { BuscarScreen } from "../screens/BuscarScreen";
 import { CrearScreen } from "../screens/CrearScreen";
@@ -12,16 +12,21 @@ export default function RouteApp() {
   return (
     <Router>
       <div>
-        <nav className="mt-3">
-          <ul className="nav nav-tabs ">
-          <li className="nav-item navbar-brand">Laboratio de Bioinformaciòn</li>
-            <li className="nav-item"  >
-              <NavLink className={isActive =>  ( `nav-link ${isActive} ? 'active' : 'inactive'`)}
-                to="/">Buscar Anotaciones</NavLink>
+        <nav className="nav">
+          <div className="nav-title">
+            <h1>Laboratorio de Bioinformación</h1>
+          </div>
+          <ul className="nav-container">
+            <li className="nav-link">
+              <NavLink to="/" className="link">
+                {" "}
+                Buscar Anotaciones
+              </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className={isActive =>  ( `nav-link ${isActive} ? 'active' : 'inactive'`)}  
-              to="/crear">Crear Anotaciones</NavLink>
+            <li className="nav-link">
+              <NavLink to="/crear" className="link">
+                Crear Anotaciones
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -32,17 +37,13 @@ export default function RouteApp() {
           <Route path="/crear">
             <CrearScreen />
           </Route>
-          
+
           <Route exact path="/">
             <BuscarScreen />
           </Route>
           <Redirect to="/" />
-          
-
-
         </Switch>
       </div>
     </Router>
   );
 }
-

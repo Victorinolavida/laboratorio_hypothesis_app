@@ -1,30 +1,33 @@
-import React, { FormEvent } from 'react'
-import { InputText } from './InputText'
-
+import React, { FormEvent } from "react";
+import { InputText } from "./InputText";
 
 interface Props {
-    onSubmit: ( e:FormEvent<HTMLFormElement> )=>void
-    onChange: (event: React.ChangeEvent<HTMLInputElement> )=>void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FormComponent = ({ onSubmit ,onChange  }: Props ) => {
-
-  const click = () =>{
-    console.log('hola')
-
-  }
+export const FormComponent = ({ onSubmit, onChange }: Props) => {
+  const click = () => {
+    console.log("hola");
+  };
   return (
     <>
-  
-     {/* input url */}
-     <form onSubmit={(e) => onSubmit(e)} className='form-control mt-5 mb-4'>
+      {/* input url */}
+      <form
+        onSubmit={(e) => onSubmit(e)}
+        className="form-control mt-5 mb-4 form"
+      >
+        <h4 className="mt-2 mb-4 text-center header-form ">
+          Ingresa la informacion para empezar a buscar
+        </h4>
+
         {/* <label form='buscarUrl'>URL</label>
       <input type="text" name="buscarUrl" id="buscarUrl"/> */}
 
         <InputText
           name="buscarUrl"
           id="url"
-          label="url"
+          label="🌍URL"
           onChange={onChange}
           placeholder="https://ejemplo.com"
         />
@@ -36,7 +39,7 @@ export const FormComponent = ({ onSubmit ,onChange  }: Props ) => {
           name="buscarUser"
           id="userID"
           onChange={onChange}
-          label="usuario"
+          label="🙍🏽‍♂️🙎🏽‍♀️USER"
           placeholder="acct:lmichan@hypothe.is"
         />
 
@@ -47,18 +50,15 @@ export const FormComponent = ({ onSubmit ,onChange  }: Props ) => {
           name="buscarTag"
           id="tag"
           onChange={onChange}
-          label="Tag"
+          label="🔖TAG"
           placeholder="biodatabases"
         />
 
         <br />
-        <button 
-        onClick={ click }
-        type="submit" className='btn btn-primary mb-3'>Buscar</button>
-
+        <button onClick={click} type="submit" className="btn btn-primary mb-3">
+          Buscar anotaciones
+        </button>
       </form>
-
-    
     </>
-  )
-}
+  );
+};
