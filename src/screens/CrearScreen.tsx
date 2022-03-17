@@ -70,21 +70,21 @@ export const CrearScreen = () => {
 
   return (
     <div>
-      <form className='form-floating mb-3"mt-5 form-control mt-5 form'>
+      <form className='form-floating mb-3"mt-5 form-control mt-5 form form-crear'>
         <h4 className="text-center header-form mt-2 mb-4">
           Inserta la información necesaria
         </h4>
 
         <InputText
           name="uri"
-          label="uri"
+          label="🌍URL"
           id="URL"
           placeholder="https://research.bioinformatics.udel.edu/iptmnet/"
           onChange={onChange}
         />
         <InputText
           name="tagsStr"
-          label="Tags"
+          label="🔖 TAGS"
           id="tagsStr"
           placeholder=" wikidata, biodatabases"
           onChange={onChange}
@@ -93,7 +93,7 @@ export const CrearScreen = () => {
 
         <div className="input-group flex-nowrap mt-3">
           <label htmlFor="text" className="input-group-text ">
-            Texto
+            📝TEXTO
           </label>
           <textarea
             onChange={(e) => onChangeTextArea(e)}

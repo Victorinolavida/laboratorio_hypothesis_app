@@ -18,13 +18,21 @@ export default function RouteApp() {
           </div>
           <ul className="nav-container">
             <li className="nav-link">
-              <NavLink to="/" className="link">
-                {" "}
+              <NavLink
+                exact
+                to="/"
+                className="link"
+                activeClassName="link-active"
+              >
                 Buscar Anotaciones
               </NavLink>
             </li>
             <li className="nav-link">
-              <NavLink to="/crear" className="link">
+              <NavLink
+                to="/crear"
+                className="link"
+                activeClassName="link-active"
+              >
                 Crear Anotaciones
               </NavLink>
             </li>
