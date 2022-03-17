@@ -1,5 +1,6 @@
 {
   "name": "laboratorio-bioinformacion",
+  "homepage": "https://victorinolavida.github.io/laboratorio_bio/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
