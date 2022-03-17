@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/laboratorio_bio/static/css/main.83001e29.css",
-    "main.js": "/laboratorio_bio/static/js/main.cc37752e.js",
-    "index.html": "/laboratorio_bio/index.html",
-    "main.83001e29.css.map": "/laboratorio_bio/static/css/main.83001e29.css.map",
-    "main.cc37752e.js.map": "/laboratorio_bio/static/js/main.cc37752e.js.map"
+    "main.css": "/Victorinolavida/laboratorio_bio/static/css/main.83001e29.css",
+    "main.js": "/Victorinolavida/laboratorio_bio/static/js/main.cc37752e.js",
+    "index.html": "/Victorinolavida/laboratorio_bio/index.html",
+    "main.83001e29.css.map": "/Victorinolavida/laboratorio_bio/static/css/main.83001e29.css.map",
+    "main.cc37752e.js.map": "/Victorinolavida/laboratorio_bio/static/js/main.cc37752e.js.map"
   },
   "entrypoints": [
     "static/css/main.83001e29.css",
