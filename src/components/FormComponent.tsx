@@ -55,7 +55,11 @@ export const FormComponent = ({ onSubmit, onChange }: Props) => {
         />
 
         <br />
-        <button onClick={click} type="submit" className="btn btn-primary mb-3">
+        <button
+          onClick={click}
+          type="submit"
+          className="btn btn-primary mb-3 shadow"
+        >
           Buscar anotaciones
         </button>
       </form>

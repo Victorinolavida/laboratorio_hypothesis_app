@@ -61,7 +61,7 @@ export const ActualizarAnnotation = ({ uri, tags, text, id }: Data) => {
       <div className="w-50  p-5 m-auto no-opacity border border-secondary position-relative card-update">
         <h4>Edita los datos correspondientes</h4>
         <button
-          className="btn btn-outline-danger position-absolute boton-cierre "
+          className="btn btn-danger position-absolute boton-cierre "
           onClick={closeBtn}
         >
           X
@@ -69,7 +69,7 @@ export const ActualizarAnnotation = ({ uri, tags, text, id }: Data) => {
         <form>
           <InputText
             name="url"
-            label="URL"
+            label="🌍URL"
             id="url"
             value={url}
             onChange={(e) => onChange(e)}
@@ -77,7 +77,7 @@ export const ActualizarAnnotation = ({ uri, tags, text, id }: Data) => {
 
           <InputText
             name="tagsStr"
-            label="TAGS"
+            label="🔖TAGS"
             id="tagsStr"
             value={tagsStr}
             onChange={(e) => onChange(e)}
@@ -85,7 +85,7 @@ export const ActualizarAnnotation = ({ uri, tags, text, id }: Data) => {
 
           <div className="input-group flex-nowrap mt-3">
             <label htmlFor="text" className="input-group-text ">
-              Texto
+              ✒TEXTO
             </label>
             <textarea
               name="texto"
