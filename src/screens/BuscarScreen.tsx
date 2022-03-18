@@ -48,7 +48,9 @@ export const BuscarScreen = () => {
         dispatch({ type: "setAnotaciones", payload: data.rows });
       });
 
-    moverPage(0);
+    moverPage(-startPage);
+
+    console.log(startPage);
   };
 
   useEffect(() => {
