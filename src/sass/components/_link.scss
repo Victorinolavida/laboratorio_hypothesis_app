@@ -1,0 +1,40 @@
+.link:link,
+.link:visited {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+}
+
+.nav-link:link,
+.nav-link:visited {
+  text-decoration: none;
+  // background-color: darken($color-principal, 10%);
+  background-color: white;
+  color: $color-principal-12 !important;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  color: white;
+  font-weight: 700;
+  border: 0.2rem solid white !important;
+}
+
+.link-active:link,
+.link-active:visited {
+  background-color: $color-principal-12 !important;
+  border: 2px solid $color-principal-12 !important;
+  padding: 0.8rem 2rem;
+  color: white !important;
+}
+
+.link-informacion {
+  &:link,
+  &:visited {
+    font-weight: 700;
+    color: black;
+    &:hover {
+      color: $color-principal-dark;
+      text-decoration: underline;
+    }
+  }
+}

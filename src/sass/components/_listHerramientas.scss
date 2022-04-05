@@ -1,0 +1,54 @@
+.herramientas-btn {
+  // background-color: black;
+  position: relative;
+}
+
+.herramientas {
+  position: absolute;
+  // background-color: $color-fondo;
+  background: linear-gradient(180deg, rgba(185, 252, 248, 1) 0%, rgba(234, 254, 253, 1) 100%);
+  padding: 2rem 2rem;
+  // border: 0.2rem solid gray;
+  border-top: none;
+  z-index: 10;
+  margin-top: -0.6rem;
+  transform: translateX(50%);
+  right: 50%;
+  width: 99%;
+  & li {
+    display: block;
+    list-style: none;
+  }
+}
+
+.over {
+  z-index: 100;
+}
+
+.link-herramienta {
+  &:link,
+  &:visited {
+    font-size: 1.6rem;
+    color: $color-principal-dark;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.show {
+  display: none;
+}
+
+.clicked {
+  background-color: darken($color-fondo, 10%);
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: none !important;
+  animation-fill-mode: none !important;
+}

@@ -1,0 +1,101 @@
+.btn {
+  border: none;
+  // Ç  margin: 1rem;
+  font-weight: 900;
+  padding: 1rem 1.6rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.login-button {
+  grid-column: 2/3;
+  width: 75%;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.01rem;
+  font-size: 1.6rem;
+  background-color: #4375e0;
+  &:hover {
+    background-color: darken(#4375e0, 10%);
+  }
+}
+
+.btn-nav {
+  background-color: $color-fondo;
+  border-radius: 2rem;
+}
+.btn-salir {
+  padding: 1rem 2rem;
+  background-color: $color-rojo;
+  color: white;
+  font-weight: 900;
+  &:hover {
+    background-color: lighten($color-rojo, 10%) !important;
+  }
+}
+
+.editar {
+  color: $color_texto_anotaciones;
+  font-weight: 700;
+  &:hover {
+    background-color: darken(white, 5%);
+  }
+}
+
+.btn-page {
+  font-size: 1.8rem;
+  color: #6c757d;
+  border-color: #6c757d !important;
+}
+
+.disabled {
+  font-size: 1.8rem;
+  z-index: -1;
+  border-color: #6c757d !important;
+  border-width: 0.2rem !important;
+  pointer-events: none;
+  opacity: 60%;
+}
+
+.btn-cerrar {
+  color: $color-rojo;
+  font-size: 2.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  background-color: $color-fondo;
+  font-weight: 700;
+  border: 0.2rem solid $color-rojo !important;
+}
+
+.btn-actualizar-nota {
+  margin-top: 3rem;
+  font-size: 1.8rem;
+  color: $color-fondo;
+  background-color: $color-principal-dark;
+  border: 0.2rem solid $color-fondo;
+
+  &:hover {
+    color: $color-principal-dark;
+    border: 0.2rem solid $color-principal-dark;
+    background-color: $color-fondo;
+  }
+}
+
+.btn-crear {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+
+  background-color: $color-principal;
+  padding: 1.2rem 2.4rem;
+  border-radius: 2rem;
+  color: $color-principal-dark;
+  font-size: 1.6rem;
+  border: 0.2rem solid $color-principal;
+
+  &:hover {
+    border: 0.2rem solid $color-principal-dark;
+  }
+}

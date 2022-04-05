@@ -1,44 +1,37 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import { BuscarScreen } from "../screens/BuscarScreen";
-import { CrearScreen } from "../screens/CrearScreen";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Login } from "../screens/Login";
+import { PrivateRoute } from "./PrivateRoute";
+import { useEffect } from "react";
+import { login } from "../helpers/getAnotaciones";
+import { useDispatch } from "react-redux";
 
 export default function RouteApp() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token-hypo") || "";
+    if (!token) {
+      return console.log("hola");
+    }
+
+    login(token).then((data) => {
+      if (!data.userid) return;
+
+      dispatch({ type: "SetToken", payload: { token, user: data.userid } });
+    });
+  }, [dispatch]);
   return (
     <Router>
       <div>
-        <nav>
-          <h2>Laboratio de Bioinformatica</h2>
-          <ul>
-            <li>
-              <Link to="/">Buscar Anotaciones</Link>
-            </li>
-            <li>
-              <Link to="/crear">Crear Anotaciones</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/crear">
-            <CrearScreen />
+          <Route path="/login">
+            <Login />
           </Route>
-          
-          <Route exact path="/">
-            <BuscarScreen />
+          <Route path="/">
+            <PrivateRoute />
           </Route>
-          
-
-
         </Switch>
       </div>
     </Router>
   );
 }
-
