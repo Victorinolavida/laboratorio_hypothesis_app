@@ -7,12 +7,7 @@ interface Props {
   onClick: (e: MouseEvent<HTMLButtonElement> | MouseEvent) => void;
 }
 
-export const Bottones = ({
-  numPages,
-  numTotalPages,
-  currentPage,
-  onClick,
-}: Props) => {
+export const Bottones = ({ numPages, numTotalPages, currentPage, onClick }: Props) => {
   const isCero = numPages === 0;
 
   return (
@@ -20,25 +15,19 @@ export const Bottones = ({
       {isCero ? (
         ""
       ) : (
-        <div className="container mt-4 mb-5 d-flex justify-content-around ">
+        <div className="buscar-btn-page ">
           <button
             onClick={(e) => onClick(e)}
-            className={`btn btn-outline-secondary ${
-              currentPage === 0 ? "disabled" : ""
-            } shadow `}
+            className={`btn btn-page ${currentPage === 0 ? "disabled" : ""} shadow `}
           >
             prev
           </button>
 
-          <span className="text-bold h3">{`${
-            currentPage + 1
-          } / ${numTotalPages}`}</span>
+          <span>{`${currentPage + 1} / ${numTotalPages}`}</span>
 
           <button
             onClick={(e) => onClick(e)}
-            className={`btn btn-outline-secondary ${
-              currentPage === numTotalPages - 1 ? "disabled" : ""
-            } shadow`}
+            className={`btn btn-page ${currentPage === numTotalPages - 1 ? "disabled" : ""} shadow`}
           >
             sig
           </button>

@@ -1,0 +1,50 @@
+.buscar-form {
+  // background-color: $color-principal;
+  // background-color: lighten($color-principal, 15%);
+  background-color: white;
+  width: 75vw;
+  border-radius: 2rem;
+  margin: auto;
+  padding: 2rem 4rem;
+  margin-bottom: 2.5rem;
+  margin-top: 2rem;
+  // box-shadow: 10px 10px 5px rgba(#000, $alpha: 0.05);
+  border: 0.1rem solid $color-principal-dark;
+}
+
+.buscar-title {
+  color: $color-titulo;
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-crear {
+  margin: 0;
+}
+
+.btn-anotaciones {
+  margin-top: 2.5rem;
+  margin-left: 6rem;
+  margin-bottom: 3rem;
+  background-color: $color-titulo !important;
+  color: white;
+  font-weight: 900;
+  letter-spacing: 1.2;
+  font-size: 1.6rem;
+  &:hover {
+    background-color: lighten($color-titulo, 10%) !important;
+  }
+}
+
+.buscar-btn-page {
+  margin-top: 3rem !important;
+  margin-bottom: 0.5rem !important;
+  border-bottom: 0.6rem solid $color-principal-12;
+  width: 75vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+}

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { InputText } from "../components/InputText";
 import { postAnnotation } from "../helpers/getAnotaciones";
+import { useSelector, useDispatch } from "react-redux";
+import { Reducers } from "../state/store";
+import { useEffect } from "react";
 
 interface initalState {
   group: string;
@@ -11,13 +14,20 @@ interface initalState {
 }
 
 const INITITALSTATE: initalState = {
-  group: "__world__",
   uri: "",
   text: "",
   tagsStr: "",
+  group: "",
 };
 
 export const CrearScreen = () => {
+  const { token } = useSelector((store: Reducers) => store);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: "setAnotaciones", payload: [] });
+  }, []);
+
   const [formData, setFormData] = useState<initalState>(INITITALSTATE);
 
   const { group, uri, text, tagsStr } = formData;
@@ -29,26 +39,20 @@ export const CrearScreen = () => {
         title: "Error",
         text: "El URL no puede estar vacío",
         icon: "error",
+        customClass: {
+          popup: "texto",
+        },
       });
     }
+
     const tags = tagsStr.split(",");
-    console.log(tags);
-    // console.log(tagsStr)
-    postAnnotation({ uri, text, tags, group })
-      .then((el) => {
-        Swal.fire({
-          title: "Anotacion creada",
-          text: "La anotacion ser creo correctamente",
-          icon: "success",
-        });
-      })
-      .catch((el) =>
-        Swal.fire({
-          title: "Error!",
-          text: "algo salio mal, intente de nuevo",
-          icon: "error",
-        })
-      );
+
+    if (!group) {
+      postAnnotation({ uri, text, tags }, token.token);
+      return;
+    }
+
+    postAnnotation({ uri, text, tags, group }, token.token);
   };
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,11 +73,9 @@ export const CrearScreen = () => {
   };
 
   return (
-    <div>
-      <form className='form-floating mb-3"mt-5 form-control mt-5 form form-crear'>
-        <h4 className="text-center header-form mt-2 mb-4">
-          Inserta la información necesaria
-        </h4>
+    <div className=" animate__animated animate__fadeInLeftBig ">
+      <form className="buscar-form ">
+        <h4 className="buscar-title title-crear">Inserta la información necesaria</h4>
 
         <InputText
           name="uri"
@@ -89,10 +91,18 @@ export const CrearScreen = () => {
           placeholder=" wikidata, biodatabases"
           onChange={onChange}
         />
-        {/* <InputText name="Texto" label="Texto" id="Texto" placeholder=' wd: https://www.wikidata.org '  onChange={onChange} /> */}
 
-        <div className="input-group flex-nowrap mt-3">
-          <label htmlFor="text" className="input-group-text ">
+        {/* group */}
+        <InputText
+          name="group"
+          label="🥼 Grupo ID"
+          id="group"
+          placeholder=" wikidata, biodatabases"
+          onChange={onChange}
+        />
+
+        <div className="formulario-item">
+          <label htmlFor="text" className="formulario-tag">
             📝TEXTO
           </label>
           <textarea
@@ -100,15 +110,11 @@ export const CrearScreen = () => {
             name="text"
             id="text"
             placeholder=" wd: https://www.wikidata.org"
-            className="form-control"
+            className="input"
           ></textarea>
         </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary text-white mt-4 mb-4 "
-          onClick={(e) => enviar(e)}
-        >
+        <button type="submit" className="btn btn-crear" onClick={(e) => enviar(e)}>
           {" "}
           Crear nueva anotacion
         </button>

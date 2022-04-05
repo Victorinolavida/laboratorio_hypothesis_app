@@ -14,15 +14,9 @@ interface Props {
   perPage: number;
 }
 
-export const Annotations = ({
-  isLoading,
-  anotaciones,
-  startPage,
-  perPage,
-}: Props) => {
-  const { uri, tags, isEditing, text, id } = useSelector(
-    (store: Reducers) => store.select
-  );
+export const Annotations = ({ isLoading, anotaciones, startPage, perPage }: Props) => {
+  const { uri, tags, isEditing, text, id, group } = useSelector((store: Reducers) => store.select);
+  const { token } = useSelector((store: Reducers) => store.token);
   const dispatch = useDispatch();
 
   const editar = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -43,14 +37,13 @@ export const Annotations = ({
             uri: data.uri,
             tags: data.tags,
             text: data.text,
+            group: data.group,
           },
         });
       });
   };
 
-  const eliminar = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const eliminar = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const id = e.currentTarget.id;
     const isDelete = await Swal.fire({
       title: "Advertencia!",
@@ -59,13 +52,19 @@ export const Annotations = ({
       confirmButtonText: "Acceptar",
       showCancelButton: true,
       cancelButtonText: "Cancelar",
+      customClass: {
+        popup: "texto",
+      },
     });
-
+    console.log(id);
     if (isDelete.isConfirmed) {
-      deleteAnotation(id);
+      deleteAnotation(id, token);
       Swal.fire({
         title: "Anotacion eliminada",
         icon: "success",
+        customClass: {
+          popup: "texto",
+        },
       });
     }
   };
@@ -73,53 +72,51 @@ export const Annotations = ({
   return (
     <div>
       {isEditing ? (
-        <ActualizarAnnotation uri={uri} tags={tags} text={text} id={id} />
+        <ActualizarAnnotation uri={uri} tags={tags} text={text} id={id} grupo={group} />
       ) : (
         ""
       )}
       {/* <ActualizarAnnotation  uri={  uri }  tags={ tags }    /> */}
 
-      <ul className="list-group mt -5  ">
+      <ul className="anotacion-lista  ">
         {!isLoading
-          ? anotaciones
-              .slice(startPage * perPage, (startPage + 1) * perPage - 1)
-              .map((el) => (
-                <li
-                  key={el.id}
-                  className="list-group-item  p-4 m-2 annotation  "
-                >
-                  <h4 className=" text-justify ">
-                    <span className="etiquetas etiqueta-anotacion">🌍URL:</span>{" "}
-                    {el.uri}
-                  </h4>
-                  <p className="text-muted">
-                    <span className="etiquetas">📌ID: </span> {el.id}
-                  </p>
-                  <p className="font-weight-bold">
-                    <span className="etiquetas">🔖 TAGS: </span>
-                    {el.tags.join(", ")}
-                  </p>
-                  <p className="font-weight-bold ">
-                    <span className="etiquetas">📝TEXTO: </span> {el.text}
-                  </p>
-                  <div className="mt-3">
-                    <button
-                      onClick={(e) => editar(e)}
-                      id={el.id}
-                      className="btn btn-light"
-                    >
-                      Editar
-                    </button>
-                    <button
-                      onClick={(e) => eliminar(e)}
-                      className="btn btn-danger ms-3"
-                      id={el.id}
-                    >
-                      Eliminar
-                    </button>
-                  </div>
-                </li>
-              ))
+          ? anotaciones.slice(startPage * perPage, (startPage + 1) * perPage - 1).map((el) => (
+              <li key={el.id} className="anotacion  animate__animated  animate__fadeIn">
+                <h3 className="anotacion-url">
+                  <span>🌍URL:</span> {el.uri}
+                </h3>
+                <p className="anotacion-etiqueta id">
+                  <span>📌ID: </span> {el.id}
+                </p>
+                <p className="anotacion-etiqueta">
+                  <span>🔖 TAGS: </span>
+                  {el.tags.join(", ")}
+                </p>
+                <p className="notacion-etiqueta grupo">
+                  <span>📝TEXTO: </span> {el.text}
+                </p>
+
+                <p className="notacion-etiqueta grupo">
+                  <span>🥼 ID grupo: </span> {el.group}
+                </p>
+                <div className="anoracion-botones">
+                  <button
+                    onClick={(e) => editar(e)}
+                    id={el.id}
+                    className="btn btn-anotacion editar"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    onClick={(e) => eliminar(e)}
+                    className="btn btn-anotacion eliminar"
+                    id={el.id}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </li>
+            ))
           : ""}
       </ul>
     </div>

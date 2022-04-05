@@ -1,0 +1,36 @@
+.nav {
+  background-color: $color-principal;
+  margin-top: 0;
+  margin-bottom: 4rem;
+  padding: 1.2rem 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+}
+
+.nav-title {
+  font-size: 2rem;
+  margin-right: 2rem;
+  letter-spacing: 1.2;
+  & a {
+    text-decoration: none;
+  }
+}
+
+.titulo {
+  color: $color-principal-dark;
+  font-weight: 900;
+  &:hover {
+    font-style: oblique;
+  }
+}
+
+.nav-container-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  list-style: none;
+  margin-right: 2rem;
+}

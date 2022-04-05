@@ -15,51 +15,49 @@ export const FormComponent = ({ onSubmit, onChange }: Props) => {
       {/* input url */}
       <form
         onSubmit={(e) => onSubmit(e)}
-        className="form-control mt-5 mb-4 form"
+        className="buscar-form animate__animated animate__fadeInLeftBig "
       >
-        <h4 className="mt-2 mb-4 text-center header-form ">
-          Ingresa la informacion para empezar a buscar
-        </h4>
+        <h4 className="buscar-title ">Ingresa la informacion para empezar a buscar</h4>
 
         {/* <label form='buscarUrl'>URL</label>
       <input type="text" name="buscarUrl" id="buscarUrl"/> */}
+        <div className="formulario">
+          <InputText
+            name="buscarUrl"
+            id="url"
+            label="🌍URL"
+            onChange={onChange}
+            placeholder="https://ejemplo.com"
+          />
 
-        <InputText
-          name="buscarUrl"
-          id="url"
-          label="🌍URL"
-          onChange={onChange}
-          placeholder="https://ejemplo.com"
-        />
+          {/* input  user */}
+          <InputText
+            name="buscarUser"
+            id="userID"
+            onChange={onChange}
+            label="🙍🏽‍♂️🙎🏽‍♀️USER"
+            placeholder="acct:lmichan@hypothe.is"
+          />
 
-        <br />
+          {/* tags */}
+          <InputText
+            name="buscarTag"
+            id="tag"
+            onChange={onChange}
+            label="🔖TAG"
+            placeholder="biodatabases"
+          />
 
-        {/* input  user */}
-        <InputText
-          name="buscarUser"
-          id="userID"
-          onChange={onChange}
-          label="🙍🏽‍♂️🙎🏽‍♀️USER"
-          placeholder="acct:lmichan@hypothe.is"
-        />
+          <InputText
+            name="buscarGrupo"
+            id="grupo"
+            onChange={onChange}
+            label="🥼ID grupo"
+            placeholder="Ingresa el ID de un grupo"
+          />
+        </div>
 
-        <br />
-
-        {/* tags */}
-        <InputText
-          name="buscarTag"
-          id="tag"
-          onChange={onChange}
-          label="🔖TAG"
-          placeholder="biodatabases"
-        />
-
-        <br />
-        <button
-          onClick={click}
-          type="submit"
-          className="btn btn-primary mb-3 shadow"
-        >
+        <button onClick={click} type="submit" className="btn btn-anotaciones">
           Buscar anotaciones
         </button>
       </form>

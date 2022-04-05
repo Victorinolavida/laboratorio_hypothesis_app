@@ -1,5 +1,4 @@
 import { FormEvent, MouseEvent, useEffect } from "react";
-// import { InputText } from "../components/InputText"
 import { getAnotaciones } from "../helpers/getAnotaciones";
 import { useForm } from "../hook/useForm";
 import { Bottones } from "./Bottones";
@@ -13,44 +12,40 @@ export interface InitialState {
   buscarUrl: string;
   buscarUser: string;
   buscarTag: string;
+  buscarGrupo: string;
 }
 
 const INITIALSTATE: InitialState = {
   buscarUrl: "",
-  buscarUser: "acct:lmichan@hypothes.is",
+  buscarUser: "",
   buscarTag: "",
+  buscarGrupo: "",
 };
 
 export const BuscarScreen = () => {
+  const { token, buscar } = useSelector((store: Reducers) => store);
+  const dispatch = useDispatch();
+  const { anotaciones, isLoading } = buscar;
+
+  console.log(anotaciones);
+
   //datos del form
   const { formData, onChange } = useForm(INITIALSTATE);
 
   //estado que maneja la paginacion
-  const { perPage, TotalPages, startPage, setTotalPage, moverPage } =
-    usePagination(10);
+  const { perPage, TotalPages, startPage, setTotalPage, moverPage } = usePagination(10);
 
-  const { anotaciones, isLoading } = useSelector(
-    (store: Reducers) => store.buscar
-  );
-  const dispatch = useDispatch();
-
-  const { buscarTag, buscarUrl, buscarUser } = formData;
+  const { buscarTag, buscarUrl, buscarUser, buscarGrupo } = formData;
 
   //funcion que maneja el form
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const url = getAnotaciones(buscarUrl, buscarUser, buscarTag);
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        // Pone las anotaciones en el estado
-        dispatch({ type: "setAnotaciones", payload: data.rows });
-      });
+    const user = buscarUser || token.user;
+    getAnotaciones(buscarUrl, user, buscarTag, buscarGrupo, token.token).then((data) => {
+      dispatch({ type: "setAnotaciones", payload: data.rows });
+    });
 
     moverPage(-startPage);
-
-    console.log(startPage);
   };
 
   useEffect(() => {

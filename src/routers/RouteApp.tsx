@@ -1,55 +1,35 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-  Redirect,
-} from "react-router-dom";
-import { BuscarScreen } from "../screens/BuscarScreen";
-import { CrearScreen } from "../screens/CrearScreen";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Login } from "../screens/Login";
+import { PrivateRoute } from "./PrivateRoute";
+import { useEffect } from "react";
+import { login } from "../helpers/getAnotaciones";
+import { useDispatch } from "react-redux";
 
 export default function RouteApp() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token-hypo") || "";
+    if (!token) {
+      return console.log("hola");
+    }
+
+    login(token).then((data) => {
+      if (!data.userid) return;
+
+      dispatch({ type: "SetToken", payload: { token, user: data.userid } });
+    });
+  }, [dispatch]);
   return (
     <Router>
       <div>
-        <nav className="nav">
-          <div className="nav-title">
-            <h1>Laboratorio de Bioinformación</h1>
-          </div>
-          <ul className="nav-container">
-            <li className="nav-link">
-              <NavLink
-                exact
-                to="/"
-                className="link"
-                activeClassName="link-active"
-              >
-                Buscar Anotaciones
-              </NavLink>
-            </li>
-            <li className="nav-link">
-              <NavLink
-                to="/crear"
-                className="link"
-                activeClassName="link-active"
-              >
-                Crear Anotaciones
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/crear">
-            <CrearScreen />
+          <Route path="/login">
+            <Login />
           </Route>
-
-          <Route exact path="/">
-            <BuscarScreen />
+          <Route path="/">
+            <PrivateRoute />
           </Route>
-          <Redirect to="/" />
         </Switch>
       </div>
     </Router>

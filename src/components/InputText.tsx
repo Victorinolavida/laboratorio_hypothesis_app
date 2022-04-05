@@ -9,17 +9,10 @@ interface Props {
   value?: string;
 }
 
-export const InputText = ({
-  name,
-  label,
-  id,
-  placeholder,
-  onChange,
-  value,
-}: Props) => {
+export const InputText = ({ name, label, id, placeholder, onChange, value }: Props) => {
   return (
-    <div className="input-group flex-nowrap mt-3">
-      <label htmlFor={id} className="input-group-text ">
+    <div className="formulario-item ">
+      <label htmlFor={id} className="formulario-tag">
         {label}
       </label>
       <input
@@ -29,7 +22,7 @@ export const InputText = ({
         onChange={onChange}
         placeholder={placeholder}
         value={value}
-        className="form-control"
+        className="input"
       />
     </div>
   );
