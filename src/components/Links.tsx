@@ -16,7 +16,7 @@ export const Links = ({ clase }: link) => {
 const onClick = (e:React.MouseEvent<HTMLLIElement, MouseEvent>)=>{
   e.preventDefault()
   dispatch({type:"RSSstatus",payload:true})
-  console.log(state)
+
 }
 
 

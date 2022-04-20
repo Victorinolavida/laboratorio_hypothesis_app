@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export const GenerarRss = () => {
@@ -10,6 +10,8 @@ export const GenerarRss = () => {
 
   const [rssQuery, setRssQuery] = useState<string>("")
 
+  const dispatch = useDispatch()
+
 
 const handleChanges = (e:React.ChangeEvent<HTMLSelectElement>) => {
      const {value,name} = e.target;
@@ -17,6 +19,11 @@ const handleChanges = (e:React.ChangeEvent<HTMLSelectElement>) => {
     if(name ==='format') setFormat(value);
     if(name==="query")  setParametro(value)
     
+}
+
+const close = ()=>{
+  dispatch({type:"RSSstatus",payload:false})
+
 }
 
 const handleInput=(e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -42,10 +49,16 @@ const onSubmit =(event:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
  return(
    <>
    <div className='tab-rss'>
+
      <div className='tab-container'>
+
+       <div className='head'>
+         
        <h2 className="header-tab">
          Genera un RSS agregando los siguientes datos:
        </h2>
+       <button onClick={close}>&#x274c;</button>
+       </div>
 
         <h3 className='header-h3-tab hj1'>Con que formato quieres generarlo</h3>
        <select name="format" defaultValue={""} onChange={e => handleChanges(e)}
@@ -74,7 +87,7 @@ const onSubmit =(event:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         </form>
         {
           rssQuery?<div>
-            <p>El RSS es: </p> <a target="_blank" href={rssQuery}>{rssQuery}</a>
+            <span>El RSS es: </span> <a className='link-tab' target="_blank" href={rssQuery}>{rssQuery}</a>
           </div>:""
         }
         

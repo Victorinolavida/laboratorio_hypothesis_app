@@ -14,10 +14,34 @@
 }
 
 .tab-container{
-  max-width: 70%;
+  width: 75%;
   background-color: $color-principal-12;
   border-radius: 2rem;
   padding: 3rem 4rem;
+}
+
+.head{
+position: relative;
+&>button{
+  font-size: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1rem;
+  border:none;
+  color:$color-rojo;
+  font-weight: 900;
+  background-color: white;
+  border-radius: 100px;
+  box-shadow: 0.4rem 0.4rem rgba($color: #000000, $alpha: 0.1);
+
+  &:hover{
+    cursor: pointer;
+    transform: translateY(0.2rem);
+    box-shadow: none;
+
+  }
+}
 }
 
 .header-tab{
@@ -40,4 +64,10 @@
 
 .form-tab{
   margin-bottom: 3rem;
+}
+
+.link-tab{
+  &:link,&:visited{
+    display: inline-block;
+  }
 }

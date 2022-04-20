@@ -3,11 +3,18 @@ import { Login } from "../screens/Login";
 import { PrivateRoute } from "./PrivateRoute";
 import { useEffect } from "react";
 import { login } from "../helpers/getAnotaciones";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Reducers } from "../state/store";
+import { tokenToString } from "typescript";
 import { GenerarRss } from "../screens/GenerarRss";
+
 
 export default function RouteApp() {
   const dispatch = useDispatch();
+
+  // para saber si mostrar el Rss
+  const state = useSelector((el: Reducers) => el.token);
+
 
   useEffect(() => {
     const token = localStorage.getItem("token-hypo") || "";
@@ -24,7 +31,7 @@ export default function RouteApp() {
   return (
     <Router>
       <div>
-        <GenerarRss />
+    { state.isOpenRSS?<GenerarRss />:"" }
         <Switch>
           <Route path="/login">
             <Login />

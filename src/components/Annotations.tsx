@@ -1,6 +1,5 @@
 import React from "react";
 import { deleteAnotation, getAnotacion } from "../helpers/getAnotaciones";
-import { TOKEN } from "../hypotesis-config/config";
 import { AnotationInterface } from "../interfaces/annotations";
 import { ActualizarAnnotation } from "./ActualizarAnnotation";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,7 +24,7 @@ export const Annotations = ({ isLoading, anotaciones, startPage, perPage }: Prop
 
     fetch(url, {
       headers: {
-        Authorization: ` Bearer ${TOKEN}`,
+        Authorization: ` Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
