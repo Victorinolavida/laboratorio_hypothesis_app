@@ -99,3 +99,24 @@
     border: 0.2rem solid $color-principal-dark;
   }
 }
+
+
+.tab-bottom{
+  font-size: 1.8rem;
+  margin-left: 2rem;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-bottom: 0.3rem solid white;
+  font-weight: 900;
+  color:white;
+  background-color: $color-principal-12;
+  transition: all 0.2s;
+  text-transform: uppercase;
+
+  &:hover{
+    background-color: white;
+    color:$color-principal-12;
+    cursor: pointer;
+  }
+
+}

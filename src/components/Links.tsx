@@ -1,12 +1,30 @@
-import React from "react";
+import { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Reducers } from "../state/store";
+
 
 interface link {
   clase: string;
 }
 
 export const Links = ({ clase }: link) => {
+
+  const state = useSelector((el: Reducers) => el.token);
+
+  const dispatch = useDispatch()
+
+const onClick = (e:React.MouseEvent<HTMLLIElement, MouseEvent>)=>{
+  e.preventDefault()
+  dispatch({type:"RSSstatus",payload:true})
+  console.log(state)
+}
+
+
   return (
     <>
+    <li onClick={(e)=>onClick(e)}>
+      <a href="#" className={clase }>Generar RSS</a>
+    </li>
       <li>
         <a
           href="https://jonudell.info/h/tools.html"
@@ -42,6 +60,8 @@ export const Links = ({ clase }: link) => {
           Hypothesis stream
         </a>
       </li>
+
+ 
     </>
   );
 };

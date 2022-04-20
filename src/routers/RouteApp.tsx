@@ -4,6 +4,7 @@ import { PrivateRoute } from "./PrivateRoute";
 import { useEffect } from "react";
 import { login } from "../helpers/getAnotaciones";
 import { useDispatch } from "react-redux";
+import { GenerarRss } from "../screens/GenerarRss";
 
 export default function RouteApp() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function RouteApp() {
   return (
     <Router>
       <div>
+        <GenerarRss />
         <Switch>
           <Route path="/login">
             <Login />

@@ -1,0 +1,43 @@
+
+
+.tab-rss{
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background-color:  rgba($color-principal,0.8);
+  place-items: center;
+  font-size: 2rem;
+}
+
+.tab-container{
+  max-width: 70%;
+  background-color: $color-principal-12;
+  border-radius: 2rem;
+  padding: 3rem 4rem;
+}
+
+.header-tab{
+  margin-bottom: 3rem;
+  color:white;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.header-h3-tab{
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+
+  &.hj1{
+    margin-top: auto;
+  }
+
+
+}
+
+.form-tab{
+  margin-bottom: 3rem;
+}

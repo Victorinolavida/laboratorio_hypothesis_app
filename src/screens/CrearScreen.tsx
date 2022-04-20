@@ -115,7 +115,6 @@ export const CrearScreen = () => {
         </div>
 
         <button type="submit" className="btn btn-crear" onClick={(e) => enviar(e)}>
-          {" "}
           Crear nueva anotacion
         </button>
       </form>
