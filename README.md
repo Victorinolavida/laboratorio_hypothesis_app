@@ -7,6 +7,11 @@ Este paso es _Obligatorio_.
 
 Esta aplicacón esta hecha con [React](https://github.com/facebook/react) con [Typescript](https://www.typescriptlang.org/) y [SASS](https://sass-lang.com/)
 
+
+
+
+
+
 ## Contacto
 
 **Twitter**: [Laboratorio](https://twitter.com/infovestigacion)
@@ -14,4 +19,4 @@ Esta aplicacón esta hecha con [React](https://github.com/facebook/react) con [T
 **Twitter Personal**: [Victorino Lavida](https://twitter.com/LavidaRuiz)
 **Mi correo**: victorinolavida@ciencias.unam.mx
 
-#### cualquier bug o fallo por favor de decime, si es posbile mandar una captura de pantalla para ver posibles fallos y facilitar el trabajo de mejora.
+##### cualquier bug o fallo por favor de decime, si es posbile mandar una captura de pantalla para ver posibles fallos y facilitar el trabajo de mejora.
