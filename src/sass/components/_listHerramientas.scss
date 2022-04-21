@@ -35,7 +35,22 @@
 
   &:hover {
     text-decoration: underline;
+    &::after{
+      content: "";
+      height: 5px;
+      width: 5px;
+      display: inline-block;
+      background-color: black;
+      // border-radius: 100px;
+      margin-left: 5px;
+      transform: rotate(45deg);
+
+    }
   }
+  @media(max-width:1350px){
+    font-size: 1.3rem !important;
+    }
+
 }
 
 .show {

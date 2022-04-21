@@ -34,18 +34,18 @@ export const Navbar = () => {
         <ul className="nav-container-link">
           <li className="nav-link">
             <NavLink exact to="/" className="nav-link" activeClassName="link-active">
-              Buscar Anotaciones
+              Buscar 
             </NavLink>
           </li>
           <li className="nav-link">
             <NavLink to="/crear" className="nav-link" activeClassName="link-active">
-              Crear Anotaciones
+              Crear 
             </NavLink>
           </li>
           <li className="nav-link">
             <div className="herramientas-btn">
               <span className={`btn btn-nav ${!mostrando ? "clicked" : ""}`} onClick={showList}>
-                Otras herramientas
+                herramientas
               </span>
               {/* animate__animated animate__backInDown */}
               <div className="over  ">

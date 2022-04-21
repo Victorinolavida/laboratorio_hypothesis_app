@@ -98,6 +98,9 @@
   &:hover {
     border: 0.2rem solid $color-principal-dark;
   }
+  @media(max-width:1350px){
+    margin-top: 1rem;
+   }
 }
 
 

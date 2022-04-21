@@ -20,6 +20,10 @@
   &:last-child {
     margin-bottom: 0;
   }
+  @media(max-width:1350px){
+    font-size: 1.5rem;
+  
+    }
 }
 
 .anotacion-url {
@@ -28,6 +32,10 @@
     color: $color-etiqueta;
     font-weight: 900;
   }
+  @media(max-width:1350px){
+  font-size: 2.3rem;
+
+   }
 }
 
 .anotacion-etiqueta,
