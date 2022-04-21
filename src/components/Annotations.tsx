@@ -55,7 +55,6 @@ export const Annotations = ({ isLoading, anotaciones, startPage, perPage }: Prop
         popup: "texto",
       },
     });
-    console.log(id);
     if (isDelete.isConfirmed) {
       deleteAnotation(id, token);
       Swal.fire({

@@ -18,9 +18,7 @@ export default function RouteApp() {
 
   useEffect(() => {
     const token = localStorage.getItem("token-hypo") || "";
-    if (!token) {
-      return console.log("hola");
-    }
+    if (!token) return 
 
     login(token).then((data) => {
       if (!data.userid) return;

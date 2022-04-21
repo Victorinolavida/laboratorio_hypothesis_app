@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 
 export const GenerarRss = () => {
@@ -36,7 +37,14 @@ const onSubmit =(event:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
 
   if(format.length === 0 ||query.length===0 || parametro.length === 0) {
 
-    return console.log('a')
+    return Swal.fire({
+      title: "Error!!",
+      icon: "error",
+      text: "Los datos son obligatorios",
+      customClass: {
+        popup: "texto",
+      },
+    });
   }
 
   if(format === "atom") setRssQuery(`http://hypothes.is/stream.atom?${parametro}=${query}`)

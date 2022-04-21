@@ -30,14 +30,12 @@ export const getAnotaciones = async (
   const grupoString: string = grupo ? `&group=${grupo}` : "";
 
   let URL = `${URLBASE}search?limit=100&user=${user}${urlString}${tagString}${grupoString}`;
-  console.log(URL);
   try {
     const rep = await fetch(URL, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(URL);
     const data = await rep.json();
     return data;
   } catch (error) {

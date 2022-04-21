@@ -27,8 +27,6 @@ export const BuscarScreen = () => {
   const dispatch = useDispatch();
   const { anotaciones, isLoading } = buscar;
 
-  console.log(anotaciones);
-
   //datos del form
   const { formData, onChange } = useForm(INITIALSTATE);
 
