@@ -23,6 +23,9 @@
   &:hover {
     font-style: oblique;
   }
+  @media(max-width:1360px){
+    font-size: 2.8rem;
+  }
 }
 
 .nav-container-link {
@@ -33,4 +36,10 @@
 .nav-link {
   list-style: none;
   margin-right: 2rem;
+  @media(max-width:1360px){
+    margin-right: 0;
+    font-size: 1.5rem;
+   padding: 0.6rem 1.2rem;
+
+  }
 }

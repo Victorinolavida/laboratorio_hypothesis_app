@@ -1,12 +1,4 @@
-// .input {
-//   padding: 1.2rem;
-//   font-size: 16px;
-//   width: 75%;
-//   &focus {
-//     border: 2px solid red;
-//     color: red;
-//   }
-// }
+
 
 .formulario {
   display: block;
@@ -30,6 +22,15 @@
   padding: 0.45rem 0.5rem;
   font-weight: 500;
   font-size: 1.6rem;
+  @media(max-width:978px){
+    padding: 0.27rem 0.25rem;
+    font-size: 1.5rem;
+  }
+  @media(max-width:1360px){
+    padding: 0.27rem 0.25rem;
+    font-size: 1.5rem;
+
+  }
 }
 
 .input {
