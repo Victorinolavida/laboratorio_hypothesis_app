@@ -11,8 +11,13 @@
   // box-shadow: 10px 10px 5px rgba(#000, $alpha: 0.05);
   border: 0.1rem solid $color-principal-dark;
 
-  @media(max-width:1350px){
+  @media (max-width: 1350px) {
     padding: 1rem 2rem;
+  }
+
+  //para celulares MOTO G4
+  @media (max-width: 360px) and (max-height: 640px) {
+    width: 95%;
   }
 }
 
@@ -40,7 +45,7 @@
     background-color: lighten($color-titulo, 10%) !important;
   }
 
-  @media(max-width:1350px){
+  @media (max-width: 1350px) {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
   }
@@ -56,7 +61,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.8rem;
-  @media(max-width: 1439px) {
+  @media (max-width: 1439px) {
     font-size: 1.5rem;
     margin-bottom: 0.2rem !important;
   }

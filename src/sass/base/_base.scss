@@ -8,6 +8,10 @@
 
 html {
   font-size: 62.5%;
+  //para celulares MOTO G4
+  @media (max-width: 360px) and (max-height: 640px) {
+    font-size: 40%;
+  }
 }
 
 body {

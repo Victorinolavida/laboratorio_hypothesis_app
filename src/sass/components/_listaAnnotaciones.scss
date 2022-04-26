@@ -5,6 +5,11 @@
   margin: 0 auto;
   padding: 2rem;
   list-style: none;
+
+  //para celulares MOTO G4
+  @media (max-width: 360px) and (max-height: 640px) {
+    width: 101%;
+  }
 }
 
 .anotacion {
@@ -20,10 +25,9 @@
   &:last-child {
     margin-bottom: 0;
   }
-  @media(max-width:1350px){
+  @media (max-width: 1350px) {
     font-size: 1.5rem;
-  
-    }
+  }
 }
 
 .anotacion-url {
@@ -32,10 +36,13 @@
     color: $color-etiqueta;
     font-weight: 900;
   }
-  @media(max-width:1350px){
-  font-size: 2.3rem;
-
-   }
+  @media (max-width: 1350px) {
+    font-size: 2.3rem;
+  }
+  //para celulares MOTO G4
+  @media (max-width: 360px) and (max-height: 640px) {
+    font-size: 1.9Prem;
+  }
 }
 
 .anotacion-etiqueta,
@@ -43,10 +50,18 @@
   font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 1.2rem;
+
+  //para celulares MOTO G4
+  @media (max-width: 360px) and (max-height: 640px) {
+    font-size: 1.2rem;
+  }
   & span {
     color: $color-etiqueta !important;
     font-weight: 900 !important;
     font-size: 2rem;
+  }
+  @media (max-width: 360px) and (max-height: 640px) {
+    font-size: 1.5rem;
   }
 }
 
