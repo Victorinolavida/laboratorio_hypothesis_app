@@ -3,23 +3,26 @@
   width: 75vw;
   padding: 2rem 2.4rem;
   margin: 0 auto;
+  //para celulares MOTO G4
+  @media (max-width: 360px) and (max-height: 640px) {
+    width: 100vw;
+  }
 }
 
 .login-titulo {
+  margin-top: 5rem;
   text-align: center;
   font-size: 5.4rem;
   color: $color-titulo;
   margin-bottom: 10rem;
-  @media(max-width: 1439px) {
+  @media (max-width: 1439px) {
     margin-bottom: 4rem;
     line-height: 1.1;
-   font-size: 5rem; 
-  
+    font-size: 5rem;
   }
 }
 
 .login-links {
-  border-radius: 1px solid red !important;
   // background-color: wheat;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -36,7 +39,7 @@
 
 .formulario-login {
   margin-top: 4rem;
-  @media(max-width:972px){
+  @media (max-width: 972px) {
     padding: 0.1rem;
     font-size: 1rem;
   }
@@ -46,4 +49,3 @@
   margin-top: 4rem;
   width: 10% !important;
 }
-

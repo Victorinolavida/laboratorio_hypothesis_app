@@ -11,7 +11,6 @@
 }
 
 .login-button {
-  grid-column: 2/3;
   width: 75%;
   color: white;
   font-weight: 600;
@@ -20,6 +19,10 @@
   background-color: #4375e0;
   &:hover {
     background-color: darken(#4375e0, 10%);
+  }
+
+  @media (max-width: 1113px) {
+    width: 8rem !important;
   }
 }
 
@@ -98,28 +101,26 @@
   &:hover {
     border: 0.2rem solid $color-principal-dark;
   }
-  @media(max-width:1350px){
+  @media (max-width: 1350px) {
     margin-top: 1rem;
-   }
+  }
 }
 
-
-.tab-bottom{
+.tab-bottom {
   font-size: 1.8rem;
   margin-left: 2rem;
   padding: 0.8rem 1.6rem;
   border: none;
   border-bottom: 0.3rem solid white;
   font-weight: 900;
-  color:white;
+  color: white;
   background-color: $color-principal-12;
   transition: all 0.2s;
   text-transform: uppercase;
 
-  &:hover{
+  &:hover {
     background-color: white;
-    color:$color-principal-12;
+    color: $color-principal-12;
     cursor: pointer;
   }
-
 }

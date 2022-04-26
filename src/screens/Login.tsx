@@ -51,42 +51,44 @@ export const Login = () => {
       });
   };
   return (
-    <div className="login-container animate__animated  animate__fadeIn">
-      <div className="">
-        <h1 className="login-titulo">Bienvenido a la aplicacion para hypothes.is</h1>
-        <div className="formulario-login formulario">
-          <div className="formulario-item">
-            <label htmlFor="token" className="formulario-tag ">
-              🔑token
-            </label>
-            <input
-              autoComplete="false"
-              onChange={(e) => onChange(e)}
-              type="text"
-              name="token"
-              id="token"
-              placeholder="Introduce tu token"
-              className="input"
-            />
+    <>
+      <div className="login-container animate__animated  animate__fadeIn">
+        <div className="">
+          <h1 className="login-titulo">Bienvenido a la aplicacion para hypothes.is</h1>
+          <div className="formulario-login formulario">
+            <div className="formulario-item">
+              <label htmlFor="token" className="formulario-tag ">
+                🔑token
+              </label>
+              <input
+                autoComplete="false"
+                onChange={(e) => onChange(e)}
+                type="text"
+                name="token"
+                id="token"
+                placeholder="Introduce tu token"
+                className="input"
+              />
+            </div>
+            <div>
+              <a
+                href="https://web.hypothes.is/start/"
+                rel="noreferrer"
+                target={"_blank"}
+                className="link link-informacion"
+              >
+                ¿No tienes token? Generalo aqui
+              </a>
+            </div>
+            <button onClick={(e) => onSubmit(e)} className="btn login-button ">
+              Entrar
+            </button>
           </div>
-          <div>
-            <a
-              href="https://web.hypothes.is/start/"
-              rel="noreferrer"
-              target={"_blank"}
-              className="link link-informacion"
-            >
-              ¿No tienes token? Generalo aqui
-            </a>
-          </div>
-          <button onClick={(e) => onSubmit(e)} className="btn login-button ">
-            Entrar
-          </button>
         </div>
-      </div>
 
-      {state.isLogin ? <Redirect to="/" /> : <Redirect to="/login" />}
+        {state.isLogin ? <Redirect to="/" /> : <Redirect to="/login" />}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
