@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import { AnotationInterface } from "../interfaces/annotations";
 
 export const URLBASE = "https://api.hypothes.is/api/";
 
@@ -51,8 +52,22 @@ export const getAnotaciones = async (
   }
 };
 
-export const getAnotacion = (id: string): string => {
-  return `${URLBASE}annotations/${id}`;
+export const getAnotacion = async (id: string, token: string) => {
+  const resp = await fetch(`${URLBASE}annotations/${id}`, {
+    headers: {
+      Authorization: ` Bearer ${token}`,
+    },
+  });
+
+  const data = await resp.json();
+
+  return {
+    id,
+    uri: data.uri,
+    tags: data.tags,
+    text: data.text,
+    group: data.group,
+  };
 };
 
 export const postAnnotation = async (payload: StateCrearAnotacion, token: string) => {
@@ -74,11 +89,6 @@ export const postAnnotation = async (payload: StateCrearAnotacion, token: string
     const result = await resp.json();
 
     if (result?.status === "failure") {
-      // return Swal.fire({
-      //   title: "Error!!!",
-      //   text: result.reason,
-      //   icon: "error",
-      // });
       return Swal.fire({
         title: "Error!!",
         icon: "error",
@@ -96,11 +106,6 @@ export const postAnnotation = async (payload: StateCrearAnotacion, token: string
         popup: "texto",
       },
     });
-    // return Swal.fire({
-    //   title: "Anotacion creada",
-    //   text: "La anotacion se creo correctamente",
-    //   icon: "success",
-    // });
   } catch (error) {
     return Swal.fire({
       title: "Error!!",
@@ -155,11 +160,6 @@ export const deleteAnotation = async (id: string, token: string) => {
     const results = await resp.json();
 
     if (results?.status === "failure") {
-      // return Swal.fire({
-      //   title: "Error!!!",
-      //   text: results.reason,
-      //   icon: "error",
-      // });
       return Swal.fire({
         title: "Error!!",
         icon: "error",
@@ -170,10 +170,9 @@ export const deleteAnotation = async (id: string, token: string) => {
       });
     }
 
-    return Swal.fire({
-      title: "Anotacion creada",
-      text: "La anotacion se creo correctamente",
-      icon: "success",
+    Swal.fire({
+      title: "Anotacion eliminada",
+      icon: "error",
       customClass: {
         popup: "texto",
       },
@@ -204,4 +203,21 @@ export const login = async (token: string) => {
     console.log(error);
     throw new Error("Algo salio mal");
   }
+};
+
+export const updateAnotation = async (
+  id: string,
+  anotaciones: AnotationInterface[],
+  token: string
+) => {
+  const resp = await fetch(`${URLBASE}annotations/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await resp.json();
+
+  const newAnnotations = anotaciones.map((note) => (note.id === data.id ? data : note));
+
+  return newAnnotations;
 };

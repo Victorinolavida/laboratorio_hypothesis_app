@@ -5,7 +5,9 @@ export interface StateBuscar {
   isLoading: boolean;
 }
 
-export type ActionBuscar = { type: "setAnotaciones"; payload: AnotationInterface[] };
+export type ActionBuscar =
+  | { type: "setAnotaciones"; payload: AnotationInterface[] }
+  | { type: "updateAnnotation"; payload: AnotationInterface };
 
 const INITIALSTATE: StateBuscar = {
   anotaciones: [],
@@ -20,6 +22,20 @@ export const buscarReducer = (state = INITIALSTATE, action: ActionBuscar): State
         anotaciones: action.payload,
         isLoading: false,
       };
+
+    case "updateAnnotation":
+      console.log(
+        state.anotaciones.map((el) => (el.id === action.payload.id ? action.payload : el))
+      );
+
+      // return {
+      //   ...state,
+      //   anotaciones: state.anotaciones.map((el) =>
+      //     el.id === action.payload.id ? action.payload : el
+      //   ),
+      // };
+      return state;
+
     default:
       return state;
   }

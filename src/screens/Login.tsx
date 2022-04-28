@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { login } from "../helpers/getAnotaciones";
 import { Reducers } from "../state/store";
 import Swal from "sweetalert2";
-import { Footer } from "../components/Footer";
+import { Footer } from "../components/";
 
 export const Login = () => {
   const dispatch = useDispatch();

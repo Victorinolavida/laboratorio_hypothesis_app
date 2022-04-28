@@ -1,11 +1,10 @@
 import { FormEvent, MouseEvent, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getAnotaciones } from "../helpers/getAnotaciones";
 import { useForm } from "../hook/useForm";
 import { Bottones } from "./Bottones";
-import { FormComponent } from "../components/FormComponent";
-import { Annotations } from "../components/Annotations";
+import { FormComponent, Annotations } from "../components/";
 import { usePagination } from "../hook/usePagination";
-import { useDispatch, useSelector } from "react-redux";
 import { Reducers } from "../state/store";
 
 export interface InitialState {
@@ -77,9 +76,8 @@ export const BuscarScreen = () => {
         startPage={startPage}
         perPage={perPage}
       />
-      {isLoading ? (
-        ""
-      ) : (
+      {/* Botones */}
+      {!isLoading && (
         <Bottones
           numPages={anotaciones.length}
           numTotalPages={TotalPages}

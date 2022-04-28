@@ -1,7 +1,7 @@
 import { InputText } from "./InputText";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { patchAnotation } from "../helpers/getAnotaciones";
+import { patchAnotation, updateAnotation } from "../helpers/getAnotaciones";
 import { Reducers } from "../state/store";
 
 export interface Data {
@@ -21,7 +21,7 @@ export const ActualizarAnnotation = ({ uri, tags, text, id, grupo }: Data) => {
     group: grupo,
   };
 
-  // const { isEditing  } = useSelector( (store: Reducers) => store.select)
+  const { anotaciones } = useSelector((store: Reducers) => store.buscar);
   const { token } = useSelector((store: Reducers) => store);
   const dispatch = useDispatch();
 
@@ -29,6 +29,7 @@ export const ActualizarAnnotation = ({ uri, tags, text, id, grupo }: Data) => {
   const { texto, url, tagsStr, group } = data;
 
   const onClick = () => {
+    //PARSEANDO LA DATA DEL FROM EDIT
     const newDate = {
       id,
       uri: url,
@@ -36,7 +37,15 @@ export const ActualizarAnnotation = ({ uri, tags, text, id, grupo }: Data) => {
       tags: tagsStr.split(","),
       group,
     };
+
+    //ACTUALIZA LA NOTA EN HYPOTHESIS
     patchAnotation(newDate, token.token);
+
+    //  ACTUALIZA LA NOTA EN EL DOM
+    updateAnotation(id, anotaciones, token.token).then((data) => {
+      console.log(data);
+      dispatch({ type: "setAnotaciones", payload: data });
+    });
 
     dispatch({ type: "noEditing" });
   };

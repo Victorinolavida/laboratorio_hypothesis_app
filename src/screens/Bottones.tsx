@@ -10,6 +10,8 @@ interface Props {
 export const Bottones = ({ numPages, numTotalPages, currentPage, onClick }: Props) => {
   const isCero = numPages === 0;
 
+  let isFinished: boolean = currentPage + 1 === numTotalPages;
+
   return (
     <>
       {isCero ? (
@@ -23,7 +25,11 @@ export const Bottones = ({ numPages, numTotalPages, currentPage, onClick }: Prop
             prev
           </button>
 
-          <span>{`${currentPage + 1} / ${numTotalPages}`}</span>
+          <span className="tag-page">
+            {" "}
+            <span className={isFinished ? ` is-over ` : ""}> {`${currentPage + 1} `}</span>/{" "}
+            {`${numTotalPages}`}
+          </span>
 
           <button
             onClick={(e) => onClick(e)}

@@ -27,6 +27,13 @@ export const Navbar = () => {
               target={"_blank"}
               rel="noreferrer"
             >
+              <div className="img-container">
+                <img
+                  src={require("../assets/biolaboratorio.jpg")}
+                  alt="laboratorio"
+                  className="image-laboratorio"
+                />
+              </div>
               <span className="titulo"> Laboratorio de Bioinformación</span>
             </a>
           </h1>
@@ -34,12 +41,12 @@ export const Navbar = () => {
         <ul className="nav-container-link">
           <li className="nav-link">
             <NavLink exact to="/" className="nav-link" activeClassName="link-active">
-              Buscar 
+              Buscar
             </NavLink>
           </li>
           <li className="nav-link">
             <NavLink to="/crear" className="nav-link" activeClassName="link-active">
-              Crear 
+              Crear
             </NavLink>
           </li>
           <li className="nav-link">

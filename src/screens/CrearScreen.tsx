@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { InputText } from "../components/InputText";
+import { InputText } from "../components/";
 import { postAnnotation } from "../helpers/getAnotaciones";
 import { useSelector, useDispatch } from "react-redux";
 import { Reducers } from "../state/store";
-import { useEffect } from "react";
-
 interface initalState {
   group: string;
   uri: string;
