@@ -7,18 +7,34 @@
   @media (max-width: 360px) and (max-height: 640px) {
     width: 100vw;
   }
+
+  @media (max-width: 825px) and (max-height: 471px) {
+    font-size: 1rem;
+    width: 100vw;
+  }
 }
 
 .login-titulo {
-  margin-top: 5rem;
+  margin-top: 2rem;
   text-align: center;
   font-size: 5.4rem;
   color: $color-titulo;
   margin-bottom: 10rem;
   @media (max-width: 1439px) {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     line-height: 1.1;
-    font-size: 5rem;
+    font-size: 4rem;
+  }
+  @media (max-width: 910px) and (max-height: 500px) {
+    font-size: 3.5rem;
+  }
+  @media (max-width: 650px) {
+    margin-bottom: 3rem;
+    line-height: 1.1;
+    font-size: 3rem;
+  }
+  @media (max-width: 390px) and (max-height: 884px) {
+    font-size: 3rem;
   }
 }
 
@@ -34,6 +50,9 @@
   text-align: center;
   &h3 {
     color: lighten($color-titulo, 25%);
+  }
+  @media (max-width: 825px) and (max-height: 471px) {
+    font-size: 1rem;
   }
 }
 

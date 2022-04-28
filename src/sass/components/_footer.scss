@@ -17,9 +17,19 @@
     width: 100%;
     font-size: 1.5rem;
   }
-  @media (max-width: 360px) and (max-height: 640px) {
-    height: 50%;
-    flex-direction: column;
+
+  //Iphone 12 pro
+  @media (max-width: 390px) and (max-height: 884px) {
+    display: inline-block;
+    position: fixed;
+    bottom: 0rem;
+    height: auto;
+  }
+  @media (max-width: 375px) and (max-height: 667px) {
+    display: inline-block;
+    height: auto;
+    bottom: 0rem;
+    position: fixed;
   }
 }
 .container-links-hypotesis {
@@ -27,22 +37,32 @@
   height: 100%;
   padding-top: 2rem;
   margin: 0;
-  //para celulares MOTO G4
-  @media (max-width: 360px) and (max-height: 640px) {
-    width: 90%;
+
+  //Iphone 12 pro
+  @media (max-width: 390px) and (max-height: 884px) {
+    visibility: hidden;
+    display: none;
   }
 }
-
 .container-list {
   display: grid;
   justify-content: center;
   margin-top: 2rem;
   text-decoration: none;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 1rem;
   list-style: none;
   & > a:link,
   a:visited {
     text-decoration: none;
+  }
+
+  @media (max-width: 1080px) and (max-height: 715px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 869px) and (max-height: 687px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -85,11 +105,15 @@
   transition: all 0.2s ease;
   width: 45%;
   padding-left: 4rem !important;
-  //para celulares MOTO G4
-  @media (max-width: 360px) and (max-height: 640px) {
-    padding-left: 0;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+
+  //Iphone 12 pro
+  @media (max-width: 390px) and (max-height: 884px) {
+    // background-color: red;
+    padding-left: 0 !important;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
 

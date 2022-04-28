@@ -57,6 +57,7 @@
   border-bottom: 0.6rem solid $color-principal-12;
   width: 75vw;
   margin: 0 auto;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,4 +66,13 @@
     font-size: 1.5rem;
     margin-bottom: 0.2rem !important;
   }
+}
+
+.tag-page {
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.is-over {
+  color: red;
 }

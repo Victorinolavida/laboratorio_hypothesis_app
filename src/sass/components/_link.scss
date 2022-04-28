@@ -4,7 +4,6 @@
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
-  
 }
 
 .nav-link:link,
@@ -37,5 +36,8 @@
       color: $color-principal-dark;
       text-decoration: underline;
     }
+  }
+  @media (max-width: 650px) {
+    font-size: 1.5rem;
   }
 }
