@@ -43,7 +43,6 @@ export const ActualizarAnnotation = ({ uri, tags, text, id, grupo }: Data) => {
 
     //  ACTUALIZA LA NOTA EN EL DOM
     updateAnotation(id, anotaciones, token.token).then((data) => {
-      console.log(data);
       dispatch({ type: "setAnotaciones", payload: data });
     });
 

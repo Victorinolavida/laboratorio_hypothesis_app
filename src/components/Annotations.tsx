@@ -1,9 +1,10 @@
-import { getAnotacion } from "../helpers/getAnotaciones";
+import { deleteAnotation, getAnotacion } from "../helpers/getAnotaciones";
 import { AnotationInterface } from "../interfaces/annotations";
 import { ActualizarAnnotation } from "./ActualizarAnnotation";
 import { useDispatch, useSelector } from "react-redux";
 import { Reducers } from "../state/store";
 import { deleteAsync } from "../helpers/eliminar";
+import Swal from "sweetalert2";
 
 interface Props {
   isLoading: boolean;
@@ -25,13 +26,31 @@ export const Annotations = ({ isLoading, anotaciones, startPage, perPage }: Prop
     );
   };
 
-  const eliminar = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const eliminar =  (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const id = e.currentTarget.id;
-    deleteAsync(id, token);
 
-    const newAnotaciones = oldAnotaciones.filter((note) => note.id !== id);
+    const isDelete =  Swal.fire({
+      title: "Advertencia!",
+      text: "¿Realmente quieres eliminar esta anotación?",
+      icon: "warning",
+      confirmButtonText: "Acceptar",
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      customClass: {
+        popup: "texto",
+      },
+    }).then( result=>{
+      
+      if( result.isConfirmed ){
+        
+        deleteAnotation(id,token)
+        const newAnotaciones = oldAnotaciones.filter((note) => note.id !== id);
+        dispatch({ type: "setAnotaciones", payload: newAnotaciones });
+      }
 
-    dispatch({ type: "setAnotaciones", payload: newAnotaciones });
+    } );
+
+    
   };
 
   return (
